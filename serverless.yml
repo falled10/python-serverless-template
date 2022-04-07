@@ -1,0 +1,21 @@
+service: service-name
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  main:
+    handler: src/handlers/main.handler
+    events:
+      - http:
+          method: GET
+          path: /hello
+plugins:
+  - serverless-python-requirements
+
+package:
+  patterns:
+    - "!venv/**"
